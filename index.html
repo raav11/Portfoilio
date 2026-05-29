@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lucas - Game Developer Portfolio</title>
+  <style>
+    /* --- GENERAL STYLES --- */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0d0d0d;
+      color: #e6e6e6;
+    }
+
+    /* --- 1. HERO SECTION --- */
+    .hero {
+      /* Make sure this path is correct for your background banner */
+      background-image: url('Images/MainBanner.png'); 
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: overlay;
+      background-color: rgba(0, 0, 0, 0.6);
+      
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0 0 20px 20px;
+      margin-bottom: 50px;
+      border: 1px solid #333;
+    }
+    
+    /* Wrapper for the PFP and Text */
+    .hero-content {
+        display: flex;
+        flex-direction: column; /* Start stacked on small screens */
+        align-items: center;
+        /* The semi-transparent background moved here so it wraps both items */
+        background: rgba(0,0,0,0.5); 
+        padding: 30px;
+        border-radius: 20px;
+        backdrop-filter: blur(5px); /* Optional: adds a nice blur effect behind the text box */
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      text-shadow: 2px 2px 5px #000;
+      margin: 0; /* Remove default margin so it sits nicely next to image */
+    }
+    
+    /* --- PROFILE PICTURE STYLE --- */
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%; /* This makes it a circle */
+      object-fit: cover;  /* Ensures the image doesn't squish */
+      border: 4px solid #4da6ff; /* Matches your blue highlight color */
+      box-shadow: 0 0 20px rgba(77, 166, 255, 0.3); /* Optional glow */
+      margin-bottom: 20px; /* Space below image on mobile */
+    }
+    
+    /* MEDIA QUERY: On larger screens, put them side-by-side */
+    @media (min-width: 768px) {
+        .hero-content {
+            flex-direction: row; /* Switch to side-by-side */
+            padding: 30px 50px;
+        }
+        
+        .profile-pic {
+            margin-right: 30px; /* Space between image and text */
+            margin-bottom: 0;   /* Remove bottom margin */
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            text-align: left;
+        }
+    }
+
+
+    /* --- 2. LAYOUT CONTAINER --- */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* --- 3. GAMES GRID --- */
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    @media (max-width: 900px) {
+      .games-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+      }
+    }
+
+    @media (max-width: 600px) {
+      .games-grid {
+        grid-template-columns: 1fr; /* 1 column on phones */
+      }
+    }
+
+    /* Game Card Styles */
+    .game-card {
+      background: #1a1a1a;
+      border-radius: 15px;
+      overflow: hidden;
+      border: 1px solid #333;
+      text-align: center;
+      transition: transform 0.2s, border-color 0.2s;
+      
+      /* Link Styles */
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    .game-card:hover {
+      transform: translateY(-5px);
+      border-color: #4da6ff;
+    }
+
+    .card-image {
+      height: 200px;
+      width: 100%;
+      background-color: #333;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end; /* Align title to bottom of image area */
+      justify-content: center;
+    }
+
+    .card-image h2 {
+      background: rgba(0,0,0,0.8);
+      width: 100%;
+      padding: 15px 10px;
+      margin: 0;
+      color: #fff;
+      font-size: 1.2rem;
+    }
+
+    .card-info {
+      padding: 20px;
+    }
+
+    .tech-stack {
+      font-size: 0.9rem;
+      color: #aaa;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+    
+    .tech-stack strong {
+      color: #fff;
+    }
+    
+    .card-info p:last-child {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    /* --- 4. REUSABLE CONTENT SECTIONS --- */
+    .content-box {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      padding: 40px;
+      border-radius: 15px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .content-box h2 {
+      margin-top: 0;
+      color: #4da6ff;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    
+    .content-box p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* --- 5. FOOTER --- */
+    footer {
+      text-align: center;
+      padding: 30px;
+      border-top: 1px solid #333;
+      color: #777;
+      margin-top: 50px;
+      background: #111;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-content">
+      <img src="Images/pfp.png" alt="Lucas Profile Picture" class="profile-pic">
+      <h1>Hello, I'm Lucas a Game Developer :)</h1>
+    </div>
+  </header>
+
+  <div class="container">
+    
+    <div class="games-grid">
+      
+      <a href="https://ravus-piratus.itch.io/silly-survivor" target="_blank" class="game-card">
+        <div class="card-image" style="background-image: url('Images/SSBanner.png');">
+          <h2>Silly Survivor</h2>
+        </div>
+        <div class="card-info">
+          <p class="tech-stack">
+            <strong>Engine:</strong> VisualStudio Code<br>
+            <strong>Language:</strong> P5.Js<br>
+            <strong>Team:</strong> Solo Dev
+          </p>
+          <p>A small game where you survive for as long as you can. Its my first game ever and it was supose to be a tamogachti funny enough.</p>
+        </div>
+      </a>
+
+      <a href="https://ravus-piratus.itch.io/Survivor-VS" target="_blank" class="game-card">
+        <div class="card-image" style="background-image: url('Images/SVBanner.png');">
+          <h2>Survivor VS</h2>
+        </div>
+        <div class="card-info">
+          <p class="tech-stack">
+           <strong>Engine:</strong> Unity 6<br>
+            <strong>Language:</strong> C#<br>
+            <strong>Team:</strong> Solo Dev
+          </p>
+          <p>A multiplayer game similar to the idea of Dead by daylight. Its my first multiplayer game.</p>
+        </div>
+      </a> 
+      
+      <a href="https://dexthmoth.itch.io/parcel" target="_blank" class="game-card">
+        <div class="card-image" style="background-image: url('Images/PBanner.png');">
+          <h2>P.A.R.C.E.L.</h2>
+        </div>
+        <div class="card-info">
+          <p class="tech-stack">
+            <strong>Engine:</strong> Unity 6<br>
+            <strong>Language:</strong> C#<br>
+            <strong>Team:</strong> 6 People
+          </p>
+          <p>A six shooter where you shoot rouge robots. Try to make it to the end of this abondend delivery company. I made the player with the pick ups and the packages.</p>
+        </div>
+      </a> 
+
+    </div>
+
+    <section class="content-box">
+      <h2>About Me</h2>
+      <p>Hello! I'm Lucas, a game developer. I care about making games I wanna make. I mostly use Unity currently but plan on learning diffrent coding laungages and engines. I also love doing my own pixel art.</p>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>© 2026 Lucas Game Dev</p>
+  </footer>
+
+</body>
+</html>
